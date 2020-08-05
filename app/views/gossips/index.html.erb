@@ -1,10 +1,10 @@
 <div class="container ml-5 ">
-    <%= link_to "Créer un potin", new_gossip_path %>
     <% unless @gossip == false %>
     <div class="alert alert-success">
         <p>Opération réussite</p>
     </div>
     <% end %>
+
 
     <h1>Liste des potins</h1>
     <% Gossip.all.each_with_index do |gossip, index| %>

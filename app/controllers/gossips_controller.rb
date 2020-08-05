@@ -6,13 +6,15 @@ class GossipsController < ApplicationController
 
   def new
     @gossip = Gossip.new
+    @tags = Tag.all
   end
 
   def create
     puts "$"*60
     puts params["title"]
     puts params["content"]
-    @gossip = Gossip.new(title: params["title"], content: params["content"], user: User.find_by(first_name: "anonymous"))
+    @gossip = Gossip.new(title: params["title"], content: params["content"], user: User.find_by(first_name: "anonymous"),)
+    @gossip.tags << Tag.find(params["taglist"]) unless params["taglist"] == "no_tag"
     if @gossip.save # essaie de sauvegarder en base @gossip
       render :index
     else

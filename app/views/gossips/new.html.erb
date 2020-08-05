@@ -9,12 +9,19 @@
         </ul>
     </div>
     <% end %>
-    <form action= <%= gossips_path %> method="post">
+    <form action= <%= gossips_path %> method="post" id="gossipform">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-        <label for="title">Titre:</label>
-        <input type="text" name="title"><br><br>
-        <label for="Content">Contenu:</label>
-        <input type="text" name="content"><br><br>
-        <input type="submit" value="Submit">
+        <label for="title">Titre:</label></br>
+        <input class="w-50" type="text" name="title"><br><br>
+        <label for="Content">Contenu:</label></br>
+        <input class="w-100" style="height: 100px" type="text" name="content"><br><br>
+        <input class="mt-1 mb-3 btn btn-success" type="submit" value="Envoyer"></br>
+        <label for="tags">Ajouter un tag</label>
+        <select id="tags" name="taglist" form="gossipform">
+            <option value="no_tag"></option>
+            <% @tags.each do |tag|%>
+                <option value="<%=tag.id%>" > <%=tag.title%> </option>
+            <%end%>
+        </select>
     </form>
 </div>
