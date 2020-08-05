@@ -17,11 +17,16 @@
         <input class="w-100" style="height: 100px" type="text" name="content"><br><br>
         <input class="mt-1 mb-3 btn btn-success" type="submit" value="Envoyer"></br>
         <label for="tags">Ajouter un tag</label>
-        <select id="tags" name="taglist" form="gossipform">
-            <option value="no_tag"></option>
-            <% @tags.each do |tag|%>
-                <option value="<%=tag.id%>" > <%=tag.title%> </option>
-            <%end%>
+        <option value="no_tag"></option>
+        <% (@tags.length - 1).times do |x|%>
+            <%tag = Tag.all[x]%>
+            <div class="form-check">
+            <input class="form-check-input" name="tag<%=x%>" type="checkbox" value="<%=tag.id%>" id="<%tag.title%>Check">
+            <label class="form-check-label" for="<%tag.title%>Check">
+                #<%= tag.title %>
+            </label>
+            </div>
+        <%end%>
         </select>
     </form>
 </div>
