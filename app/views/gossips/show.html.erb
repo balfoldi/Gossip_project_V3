@@ -1,0 +1,25 @@
+<div class='ml-5'>
+<h1> Le potin en détails. </h1>
+<br/> 
+
+<p><b>Crée par:</b> <%= Gossip.find(@id).user.first_name %></br>
+<b>Depuis la ville de </b><%= Gossip.find(@id).user.city.name %></p>
+
+<p><b>Nom:</b> <%= Gossip.find(@id).title %></p>
+
+
+
+<p><b>Contenu:</b> <%= Gossip.find(@id).content %> </p>
+
+<p><b>Date de création:</b> Gossip.find(@id).created_at</p>
+<button>
+<%= link_to "Profil de l'auteur", user_path(Gossip.find(@id).user.id)%>
+</button>
+</br>
+<button>
+<%= link_to "Editer", edit_gossip_path(@id)%>
+</button>
+
+<button>
+<a class="btn-btn-danger" data-confirm="Sur?" data-method="DELETE"> Supprimer </a>
+</button>
